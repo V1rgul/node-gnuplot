@@ -1,0 +1,24 @@
+{
+  "name": "gnu-plot",
+  "version": "0.1.0",
+  "description": "javascript node wrapper for gnuplot",
+  "main": "gnuplot.js",
+  "scripts": {
+    "test": "node gnuplot-test.js"
+  },
+  "author": "V1rgul",
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/V1rgul/node-gnuplot"
+  },
+  "keywords": [
+    "gnuplot",
+    "plot"
+  ],
+  "bugs": {
+    "url": "https://github.com/V1rgul/node-gnuplot/issues"
+  },
+  "homepage": "https://github.com/V1rgul/node-gnuplot"
+}
