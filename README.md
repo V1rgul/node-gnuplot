@@ -4,7 +4,7 @@ javascript node.js wrapper for [gnuplot](http://www.gnuplot.info/)
 
 ##example
 ``` js
-var gnuplot = require('gnuplot');
+var gnuplot = require('gnu-plot');
 gnuplot().plot([{
     data:[[0,0],[1,1],[2,0]]
 }

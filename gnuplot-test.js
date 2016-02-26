@@ -1,5 +1,5 @@
 
-var gnuplot = require('./gnuplot');
+var gnuplot = require('./gnu-plot');
 
 var interval = 100, resolution = 4;
 var step = 0;
