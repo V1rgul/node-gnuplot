@@ -55,7 +55,7 @@ gnuPlot = function () {
 			var val = options[key];
 			if(val){
 				if(val.length > 0)
-					return "set " + key + " " + options[key] + "\n";
+					return "set " + key + " " + val + "\n";
 				else
 					return "set " + key + "\n";
 			}else{
