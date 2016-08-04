@@ -59,12 +59,12 @@ by value : `#RRGGBB`, `#AARRGGBB`
 
 ####data
 data Array with structure  
-```js
+``` js
 [[x0,y0],[x1,y1],[x2,y2], ...]
 ```
 
 ###Exemple
-```js
+``` js
 plot.plot([{
     title:"data3",
     style:"lines",
@@ -87,22 +87,24 @@ See gnuplot documentation for a complete list of available options.
 
 Notable options:
 ####fixed axes
-**`{Xrange|Yrange}:"[[<min>]:[<max>]]"`**  
-```js
-plot.set(Xrange:"[0:]",Yrange:"[-5:5]");
+**`{xrange|yrange}:"[[<min>]:[<max>]]"`**  
+``` js
+plot.set(xrange:"[0:]",yrange:"[-5:5]");
 ```
 
 ####output to image
 **`term:"{png|jpeg} size <x>,<y>", output:"<file>"`**  
-```js
+``` js
 plot.set({term:"png size 800,600", output:"plot.png"});
 ```
 
 ####output to terminal
-**`term:"dumb [size <x>,<y>]"`**  
-```js
+**`term:"dumb [size <x> <y>]"`**  
+``` js
 plot.stdout.pipe(process.stdout); //print gnuplot output to console
-plot.set({term:"dumb"});
+plot.set({term:"dumb 200 50"});
+// or for a plot filling the terminal
+plot.set({term:"dumb "+process.stdout.columns+" "+process.stdout.rows}); 
 ```
 
 
