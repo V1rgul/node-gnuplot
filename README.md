@@ -2,7 +2,7 @@ node-gnuplot
 ============
 javascript node.js wrapper for [gnuplot](http://www.gnuplot.info/)
 
-##example
+## example
 ``` js
 var gnuplot = require('gnu-plot');
 gnuplot().plot([{
@@ -11,18 +11,18 @@ gnuplot().plot([{
 ```
 
 
-#methods
+# methods
 
-##gnuplot()
+## gnuplot()
 Spawn a new gnuplot process and return a plot object inheriting child_process.  
 ``` js
 var plot = gnuplot();
 ```
 
-##plot.plot(plotsSettings)
+## plot.plot(plotsSettings)
 Plots with plotsSettings Array.  
 
-###plotsSettings
+### plotsSettings
 Array of plot settings objects corresponding to different data series  
 ``` js
 [{
@@ -33,11 +33,11 @@ Array of plot settings objects corresponding to different data series
 },...]
 ```
 
-####title
+#### title
 *default: <index of setting object in plotsSettings array>*  
 title of the data serie  
 
-####style
+#### style
 *default: "lines"*  
 style of the data serie in :  
 ```
@@ -51,19 +51,19 @@ boxes
 ```
 see `with` clause of the plot command in gnuplot documentation for more.  
 
-####color
+#### color
 *shorthand for style:'linecolor rgbcolor "<color>"'*  
 color of the data serie  
 by name : execute `gnuplot -e "show colornames"` to view all possible values  
 by value : `#RRGGBB`, `#AARRGGBB`  
 
-####data
+#### data
 data Array with structure  
 ``` js
 [[x0,y0],[x1,y1],[x2,y2], ...]
 ```
 
-###Exemple
+### Example
 ``` js
 plot.plot([{
     title:"data3",
@@ -73,32 +73,32 @@ plot.plot([{
 }]);
 ```
 
-##plot.splot(plotsSettings)
+## plot.splot(plotsSettings)
 same as `plot.plot(plotsSettings)` for 3D plots  
 
 
 
-##plot.set(options)
+## plot.set(options)
 set or unset some gnuplot options.  
 
-###options
+### options
 object containing options as key:values.  
 See gnuplot documentation for a complete list of available options.  
 
 Notable options:
-####fixed axes
+#### fixed axes
 **`{xrange|yrange}:"[[<min>]:[<max>]]"`**  
 ``` js
 plot.set(xrange:"[0:]",yrange:"[-5:5]");
 ```
 
-####output to image
+#### output to image
 **`term:"{png|jpeg} size <x>,<y>", output:"<file>"`**  
 ``` js
 plot.set({term:"png size 800,600", output:"plot.png"});
 ```
 
-####output to terminal
+#### output to terminal
 **`term:"dumb [size <x> <y>]"`**  
 ``` js
 plot.stdout.pipe(process.stdout); //print gnuplot output to console
@@ -108,7 +108,7 @@ plot.set({term:"dumb "+process.stdout.columns+" "+process.stdout.rows});
 ```
 
 
-##plot.print(string)
+## plot.print(string)
 Write string to stdin of the gnuplot process.  
 
 
