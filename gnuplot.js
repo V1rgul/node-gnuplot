@@ -72,8 +72,8 @@ gnuPlot = function () {
 			if(field.data.constructor === String) r.push(field.data);
 			else r.push("'-'");
 
-			if(field.title)	r.push("title \""+field.title+"\"");
-			else			r.push("title \""+i+"\"");
+			if(field.title !== undefined)	r.push("title \""+field.title+"\"");
+			else                            r.push("title \""+     i     +"\"");
 
 			r.push("with");
 			if(field.style)	r.push(field.style);
