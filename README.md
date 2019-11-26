@@ -7,7 +7,7 @@ javascript node.js wrapper for [gnuplot](http://www.gnuplot.info/)
 var gnuplot = require('gnu-plot');
 gnuplot().plot([{
     data:[[0,0],[1,1],[2,0]]
-}]);
+}])
 ```
 
 
@@ -16,7 +16,7 @@ gnuplot().plot([{
 ## gnuplot()
 Spawn a new gnuplot process and return a plot object inheriting child_process.  
 ``` js
-var plot = gnuplot();
+var plot = gnuplot()
 ```
 
 ## plot.plot(plotsSettings)
@@ -34,11 +34,11 @@ Array of plot settings objects corresponding to different data series
 ```
 
 #### title
-*default: <index of setting object in plotsSettings array>*  
+*default: &lt;index of setting object in plotsSettings array&gt;*  
 title of the data serie  
 
 #### style
-*default: "lines"*  
+*default: `"lines"`*  
 style of the data serie in :  
 ```
 lines
@@ -52,7 +52,7 @@ boxes
 see `with` clause of the plot command in gnuplot documentation for more.  
 
 #### color
-*shorthand for style:'linecolor rgbcolor "<color>"'*  
+*shorthand for `style:"linecolor rgbcolor <color>"`*  
 color of the data serie  
 by name : execute `gnuplot -e "show colornames"` to view all possible values  
 by value : `#RRGGBB`, `#AARRGGBB`  
@@ -66,11 +66,25 @@ data Array with structure
 ### Example
 ``` js
 plot.plot([{
-    title:"data3",
-    style:"lines",
-    color:"#00FF00",
-    data:[[0,0],[1,1],[2,0]]
-}]);
+	title:"A",
+	color:"#00FF00",
+	data:[
+		[0  , 10],
+		[0.5, 90],
+		[1  , 85],
+		[1.5, 20],
+		[2  , 25]
+	]
+},{
+	title:"B",
+	color:"red",
+	style:"linespoints",
+	data:[
+		[0.4,30],
+		[1.1,70],
+		[1.8,40]
+	]
+}])
 ```
 
 ## plot.splot(plotsSettings)
@@ -87,21 +101,22 @@ See gnuplot documentation for a complete list of available options.
 
 Notable options:
 #### fixed axes
-**`{xrange|yrange}:"[[<min>]:[<max>]]"`**  
+`{xrange|yrange}:"[[<min>]:[<max>]]"`  
 ``` js
-plot.set(xrange:"[0:]",yrange:"[-5:5]");
+plot.set({xrange:"[0:]",yrange:"[-5:5]"});
 ```
 
 #### output to image
-**`term:"{png|jpeg} size <x>,<y>", output:"<file>"`**  
+`term:"{png|jpeg} size <x>,<y>", output:"<file>"`  
 ``` js
 plot.set({term:"png size 800,600", output:"plot.png"});
 ```
 
 #### output to terminal
-**`term:"dumb [size <x> <y>]"`**  
+`term:"dumb [size <x> <y>]"`  
 ``` js
 plot.stdout.pipe(process.stdout); //print gnuplot output to console
+// plot 200 characters wide & 50 chararcters tall 
 plot.set({term:"dumb 200 50"});
 // or for a plot filling the terminal
 plot.set({term:"dumb "+process.stdout.columns+" "+process.stdout.rows}); 

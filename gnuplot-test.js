@@ -1,7 +1,7 @@
 
 var gnuplot = require('./gnuplot');
 
-var interval = 100, resolution = 4;
+var interval = 500, resolution = 4;
 var step = 0;
 
 var dataA = [], dataB = [];
