@@ -4,7 +4,7 @@ javascript node.js wrapper for [gnuplot](http://www.gnuplot.info/)
 
 ## example
 ``` js
-var gnuplot = require('gnu-plot');
+var gnuplot = require('gnu-plot')
 gnuplot().plot([{
     data:[[0,0],[1,1],[2,0]]
 }])
@@ -26,20 +26,21 @@ Plots with plotsSettings Array.
 Array of plot settings objects corresponding to different data series  
 ``` js
 [{
-    title:<title>,
-    style:<style>,
-    color:<color>,
+	title:<title>,
+	style:<style>,
+	color:<color>,
     data:<data>
+	data:<data>,
 },...]
 ```
 
 #### title
 *default: &lt;index of setting object in plotsSettings array&gt;*  
-title of the data serie  
+Title of the data serie  
 
 #### style
 *default: `"lines"`*  
-style of the data serie in :  
+Style of the data serie in :  
 ```
 lines
 points
@@ -53,12 +54,12 @@ see `with` clause of the plot command in gnuplot documentation for more.
 
 #### color
 *shorthand for `style:"linecolor rgbcolor <color>"`*  
-color of the data serie  
+Color of the data serie  
 by name : execute `gnuplot -e "show colornames"` to view all possible values  
 by value : `#RRGGBB`, `#AARRGGBB`  
 
 #### data
-data Array with structure  
+Data Array with structure  
 ``` js
 [[x0,y0],[x1,y1],[x2,y2], ...]
 ```
@@ -88,15 +89,15 @@ plot.plot([{
 ```
 
 ## plot.splot(plotsSettings)
-same as `plot.plot(plotsSettings)` for 3D plots  
+Same as `plot.plot(plotsSettings)` for 3D plots  
 
 
 
 ## plot.set(options)
-set or unset some gnuplot options.  
+Set or unset some gnuplot options.  
 
 ### options
-object containing options as key:values.  
+Object containing options as key:values.  
 See gnuplot documentation for a complete list of available options.  
 
 Notable options:
@@ -109,17 +110,17 @@ plot.set({xrange:"[0:]",yrange:"[-5:5]"});
 #### output to image
 `term:"{png|jpeg} size <x>,<y>", output:"<file>"`  
 ``` js
-plot.set({term:"png size 800,600", output:"plot.png"});
+plot.set({term:"png size 800,600", output:"plot.png"})
 ```
 
 #### output to terminal
 `term:"dumb [size <x> <y>]"`  
 ``` js
-plot.stdout.pipe(process.stdout); //print gnuplot output to console
+plot.stdout.pipe(process.stdout) //print gnuplot output to console
 // plot 200 characters wide & 50 chararcters tall 
-plot.set({term:"dumb 200 50"});
+plot.set({term:"dumb 200 50"})
 // or for a plot filling the terminal
-plot.set({term:"dumb "+process.stdout.columns+" "+process.stdout.rows}); 
+plot.set({term:"dumb "+process.stdout.columns+" "+process.stdout.rows})
 ```
 
 
