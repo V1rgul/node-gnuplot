@@ -62,11 +62,11 @@ by value : `#RRGGBB`, `#AARRGGBB`
 *default: `x1y1`*  
 Axes used for the data serie.  
 Choose from `["x1y1","x1y2","x2y1","x2y2"]`  
-By default, the axes are positionned :
-	- x1: bottom  
-	- x2: top  
-	- y1: left  
-	- y2: right  
+By default, the axes are positionned :  
+	- `x1`: bottom  
+	- `x2`: top  
+	- `y1`: left  
+	- `y2`: right  
 
 #### data
 Data Array with structure  
