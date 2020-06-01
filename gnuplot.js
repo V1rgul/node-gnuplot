@@ -72,6 +72,7 @@ gnuPlot = function () {
 			if(field.data.constructor === String) r.push(field.data)
 			else r.push("'-'")
 
+			if(field.axes !== undefined)  r.push("axes "+field.axis)
 
 			if(field.title !== undefined) r.push("title \""+field.title+"\"")
 			else                          r.push("title \""+     i     +"\"")

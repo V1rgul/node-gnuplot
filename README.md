@@ -29,7 +29,7 @@ Array of plot settings objects corresponding to different data series
 	title:<title>,
 	style:<style>,
 	color:<color>,
-    data:<data>
+	axes:<axes>,
 	data:<data>,
 },...]
 ```
@@ -57,6 +57,16 @@ see `with` clause of the plot command in gnuplot documentation for more.
 Color of the data serie  
 by name : execute `gnuplot -e "show colornames"` to view all possible values  
 by value : `#RRGGBB`, `#AARRGGBB`  
+
+#### axes
+*default: `x1y1`*  
+Axes used for the data serie.  
+Choose from `["x1y1","x1y2","x2y1","x2y2"]`  
+By default, the axes are positionned :
+	- x1: bottom  
+	- x2: top  
+	- y1: left  
+	- y2: right  
 
 #### data
 Data Array with structure  
@@ -101,10 +111,16 @@ Object containing options as key:values.
 See gnuplot documentation for a complete list of available options.  
 
 Notable options:
-#### fixed axes
-`{xrange|yrange}:"[[<min>]:[<max>]]"`  
+#### Fixed axes
+`{x|y|x2|y2}range:"[[<min>]:[<max>]]"`  
 ``` js
-plot.set({xrange:"[0:]",yrange:"[-5:5]"});
+plot.set({xrange:"[0:]",yrange:"[-5:5]"})
+```
+
+#### Line at origin
+`{x|y|x2|y2}zeroaxis: true`  
+``` js
+plot.set({yzeroaxis:true})
 ```
 
 #### output to image
