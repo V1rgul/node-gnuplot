@@ -52,13 +52,20 @@ gnuPlot = function () {
 
 	plotObj.set = function (options) {
 		var str = Object.keys(options).map(function(key){
-			var val = options[key]
-			if(val){
-				if(val.length > 0)
-					return "set " + key + " " + val + "\n"
-				else
-					return "set " + key + "\n"
-			}else{
+			var vals = options[key]
+			if(vals){
+				if(!Array.isArray(vals)){
+					vals = [vals]
+				}
+
+				return vals.map(function(val){
+					if(val === true)
+						return "set " + key + "\n"
+					else
+						return "set " + key + " " + val + "\n"
+				}).join("")
+
+			} else {
 				return "unset " + key + "\n"
 			}
 		}).join("")
