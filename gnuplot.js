@@ -74,18 +74,22 @@ gnuPlot = function () {
 	}
 
 	function plotString (data) {
+		var bodyArr = []
+
 		var head = data.map(function(field, i){
 			var r = []
-			if(field.data.constructor === String) r.push(field.data)
-			else r.push("'-'")
+			if(field.data.constructor === String){
+				r.push(field.data)
+			} else {
+				r.push("'-'")
+				bodyArr.push( convertArray(field.data) + "e\n" )
+			}
 			["using", "smooth", "axes", "bins"].forEach( (keyword) => {
 				if(field[keyword]  !== undefined) r.push(keyword+" "+field[keyword])
 			})
 
 			if(field.title  !== undefined) r.push("title \""+field.title+"\"")
 			else                           r.push("title \""+     i     +"\"")
-			if(field.title !== undefined) r.push("title \""+field.title+"\"")
-			else                          r.push("title \""+     i     +"\"")
 
 			r.push("with")
 			if(field.style)	r.push(field.style)
@@ -97,9 +101,7 @@ gnuPlot = function () {
 			return r.join(" ")
 		}).join(", ") + "\n"
 
-		var body = data.map(function(field){
-			return convertArray(field.data) + "e\n"
-		}).join("")
+		var body = bodyArr.join("")
 
 		return head + body
 	}
