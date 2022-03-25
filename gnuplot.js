@@ -45,7 +45,7 @@ gnuPlot = function () {
 	})
 
 	plotObj.print = function (d) {
-		//log(d)
+		// log(d)
 		plotObj.stdin.write(d)
 		return plotObj
 	}
@@ -78,9 +78,12 @@ gnuPlot = function () {
 			var r = []
 			if(field.data.constructor === String) r.push(field.data)
 			else r.push("'-'")
+			["using", "smooth", "axes", "bins"].forEach( (keyword) => {
+				if(field[keyword]  !== undefined) r.push(keyword+" "+field[keyword])
+			})
 
-			if(field.axes !== undefined)  r.push("axes "+field.axes)
-
+			if(field.title  !== undefined) r.push("title \""+field.title+"\"")
+			else                           r.push("title \""+     i     +"\"")
 			if(field.title !== undefined) r.push("title \""+field.title+"\"")
 			else                          r.push("title \""+     i     +"\"")
 
@@ -88,7 +91,8 @@ gnuPlot = function () {
 			if(field.style)	r.push(field.style)
 			else			r.push("lines")
 
-			if(field.color)	r.push("linecolor rgbcolor \""+field.color+"\"")
+			if     (field.color   )	r.push("linecolor "+field.color)
+			else if(field.rgbcolor)	r.push("linecolor rgbcolor \""+field.rgbcolor+"\"")
 
 			return r.join(" ")
 		}).join(", ") + "\n"
