@@ -107,9 +107,13 @@ by value : `#RRGGBB`, `#AARRGGBB`
 
 
 #### data
-Data Array with structure  
+Data Array with structure   
 ``` js
 [[x0,y0],[x1,y1],[x2,y2], ...]
+```
+Or mathematical formula  
+``` js
+"2*x**2+3*x+4"
 ```
 
 ### Example
@@ -132,7 +136,11 @@ plot.plot([{
 		[0.4,30],
 		[1.1,70],
 		[1.8,40]
-	]
+	],
+},{
+	title:"C",
+	rgbcolor:"blue",
+	data: "-2*x**2+3*x+4",
 }])
 ```
 
@@ -196,7 +204,7 @@ plot.set({
 `grid: "[xtics] [mxtics] [ytics] [mytics] [ztics] [mztics] [<style>]"`  
 ``` js
 plot.set({grid:"xtics ytics"})// default style
-plot.set({grid:"xtics mxtics ytics mytics lines -1 dashtype 2, lines 0"}) // solid for tics, dashed for minor tics
+plot.set({grid:"xtics mxtics ytics mytics lines -1 dashtype 2, lines 0"}) // dashed for tics, dotted for minor tics
 ```
 
 #### output to image
